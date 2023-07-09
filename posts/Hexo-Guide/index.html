@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wincer.space","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="$\text{Hexo}$ 是一个优秀的轻量级博客系统，本身可以兼容各种功能 而 $\text{NexT}$，则是一个集成有非常多功能、并且兼容性极好 因此本文选择了 $\text{Hexo+NexT}$ 的搭配 文中内容有大量需要更新的内容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客搭建全面指南+基于NexT的优化">
+<meta property="og:url" content="https://wincer.space/posts/Hexo-Guide/index.html">
+<meta property="og:site_name" content="Wincer&#39;s Blog">
+<meta property="og:description" content="$\text{Hexo}$ 是一个优秀的轻量级博客系统，本身可以兼容各种功能 而 $\text{NexT}$，则是一个集成有非常多功能、并且兼容性极好 因此本文选择了 $\text{Hexo+NexT}$ 的搭配 文中内容有大量需要更新的内容">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fupload-images.jianshu.io%2Fupload_images%2F15934130-2f1f347b172a7107.jpg%3FimageMogr2%2Fauto-orient%2Fstrip%257CimageView2%2F2%2Fw%2F1240&refer=http%3A%2F%2Fupload-images.jianshu.io&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1631158843&t=34a22477a057a0c3041d578f5f847012">
+<meta property="og:image" content="https://i.bmp.ovh/imgs/2021/08/6c7ddb3e975f29a8.png">
+<meta property="og:image" content="https://i.bmp.ovh/imgs/2021/08/b866ca35e9eb33c6.png">
+<meta property="og:image" content="https://i.bmp.ovh/imgs/2021/08/84912995173b1fb3.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/08/07/ahwVQU.png">
+<meta property="og:image" content="https://i.bmp.ovh/imgs/2021/08/a371e5b3ea311d99.png">
+<meta property="og:image" content="https://s1.328888.xyz/2022/04/02/LhRfd.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/08/07/ahDIpt.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/08/07/ahgVln.png">
+<meta property="og:image" content="https://s1.328888.xyz/2022/04/02/L4Rmq.png">
+<meta property="og:image" content="https://i.bmp.ovh/imgs/2021/08/e8aa61f7309555be.png">
+<meta property="og:image" content="https://i.bmp.ovh/imgs/2021/08/340a546c9410e8f6.png">
+<meta property="og:image" content="https://i.bmp.ovh/imgs/2022/04/02/9bbb3a71991df759.png">
+<meta property="og:image" content="https://i.bmp.ovh/imgs/2021/08/4dda7a307388b911.png">
+<meta property="og:image" content="https://img-service.csdnimg.cn/img_convert/74fbf69d9a51d681dc4b7e3fbfe31880.png">
+<meta property="og:image" content="https://img-service.csdnimg.cn/img_convert/ab972faca09544bce0c902b4e7f4d9c5.png">
+<meta property="og:image" content="https://i.bmp.ovh/imgs/2021/08/3a7327536258d31d.png">
+<meta property="og:image" content="https://img-service.csdnimg.cn/img_convert/2030c8d1caec3531c2e5f29fea22be8a.png">
+<meta property="og:image" content="https://img-service.csdnimg.cn/img_convert/3fea7cbbcb44d39fc27c426ac1d090ba.png">
+<meta property="og:image" content="https://i.bmp.ovh/imgs/2021/08/16537acd1ac46c85.png">
+<meta property="og:image" content="https://i.bmp.ovh/imgs/2021/08/f1943d6895088094.png">
+<meta property="og:image" content="https://i.bmp.ovh/imgs/2021/08/a102306bc2fe1b19.png">
+<meta property="og:image" content="https://i.bmp.ovh/imgs/2021/08/b548e9932c0dc87e.png">
+<meta property="og:image" content="https://i.bmp.ovh/imgs/2021/08/46f82ef18b29ce20.png">
+<meta property="og:image" content="https://i.bmp.ovh/imgs/2021/08/4efceeb912d4b27f.png">
+<meta property="article:published_time" content="2021-08-06T01:51:34.000Z">
+<meta property="article:modified_time" content="2023-07-09T07:37:57.787Z">
+<meta property="article:author" content="Wincer">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fupload-images.jianshu.io%2Fupload_images%2F15934130-2f1f347b172a7107.jpg%3FimageMogr2%2Fauto-orient%2Fstrip%257CimageView2%2F2%2Fw%2F1240&refer=http%3A%2F%2Fupload-images.jianshu.io&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1631158843&t=34a22477a057a0c3041d578f5f847012">
+
+<link rel="canonical" href="https://wincer.space/posts/Hexo-Guide/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Hexo博客搭建全面指南+基于NexT的优化 | Wincer's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Wincer's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Wincer's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Le vent se lève, il faut tenter de vivre.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/WincerX" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wincer.space/posts/Hexo-Guide/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Wincer">
+      <meta itemprop="description" content="冷眼向洋看世界">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wincer's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo博客搭建全面指南+基于NexT的优化
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-06 09:51:34" itemprop="dateCreated datePublished" datetime="2021-08-06T09:51:34+08:00">2021-08-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-07-09 15:37:57" itemprop="dateModified" datetime="2023-07-09T15:37:57+08:00">2023-07-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <link rel="stylesheet" type="text&#x2F;css" href="https://cdn.jsdelivr.net/npm/hexo-tag-hint@0.3.1/dist/hexo-tag-hint.min.css"><p>$\text{Hexo}$ 是一个优秀的轻量级博客系统，本身可以兼容各种功能</p>
+<p>而 $\text{NexT}$，则是一个集成有非常多功能、并且兼容性极好</p>
+<p>因此本文选择了 $\text{Hexo+NexT}$ 的搭配</p>
+<p>文中内容有大量需要更新的内容</p>
+<span id="more"></span>
+
+<h1 id="第一部分：-text-Hexo-简介"><a href="#第一部分：-text-Hexo-简介" class="headerlink" title="第一部分： $\text{Hexo}$ 简介"></a>第一部分： $\text{Hexo}$ 简介</h1><p>Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Coding上，是搭建博客的首选框架。可以进入hexo官网进行详细查看（毕竟官方文档很有用），因为Hexo的创建者是台湾人，对中文的支持很友好，可以选择中文进行查看。</p>
+<h1 id="第二部分：-配置-text-Hexo"><a href="#第二部分：-配置-text-Hexo" class="headerlink" title="第二部分： 配置 $\text{Hexo}$"></a>第二部分： 配置 $\text{Hexo}$</h1><h2 id="1-安装-text-Git"><a href="#1-安装-text-Git" class="headerlink" title="1. 安装 $\text{Git}$"></a>1. 安装 $\text{Git}$</h2><p>Git是目前世界上最先进的分布式版本控制系统，可以有效、高速的处理从很小到非常大的项目版本管理。也就是用来管理你的hexo博客文章，上传到GitHub的工具。</p>
+<p>请到<a target="_blank" rel="noopener" href="https://gitforwindows.org/"><strong>官网</strong></a>下载，然后打开 <strong>$\text{Git Bash}$命令行工具</strong></p>
+<p>或者到<a target="_blank" rel="noopener" href="https://npm.taobao.org/mirrors/git-for-windows/v2.33.0-rc1.windows.1/"><strong>国内镜像站</strong></a>，找到相应的最新的版本</p>
+<p>安装完成后，使用 <code>git version</code> 验证版本</p>
+<h2 id="2-安装-text-Node-JS"><a href="#2-安装-text-Node-JS" class="headerlink" title="2. 安装 $\text{Node.JS}$"></a>2. 安装 $\text{Node.JS}$</h2><p>Hexo基于<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Node.JS</a>，因此需要安装Node.Js和<code>npm</code>工具。</p>
+<p><a target="_blank" rel="noopener" href="https://npm.taobao.org/mirrors/python/3.9.6/"><strong>国内镜像站</strong></a>，找到对应的最新版本</p>
+<p>选择 $\text{LTS}$ 版本即可</p>
+<p>这样一来，就可以使用<code>Git Bash</code>来代替<code>cmd</code>了</p>
+<h2 id="3-安装-text-Hexo"><a href="#3-安装-text-Hexo" class="headerlink" title="3. 安装 $\text{Hexo}$"></a>3. 安装 $\text{Hexo}$</h2><p>你需要在Git Bash中使用此命令安装Hexo</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>然后使用 <code>hexo -v</code> 查看版本验证安装</p>
+<p>之后初始化Hexo！</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init    </span><br></pre></td></tr></table></figure>
+
+<p>注意<code>myblog</code> 处是你的博客本地文件夹的名字，写什么都可以</p>
+<p>然后执行下面的命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> myblog   //进入这个myblog文件夹</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p><font color=Orange>注意这些命令只能一次输入一条。粘贴可在Git Bash窗口右键或者 Shift+Ins </font></p>
+<hr>
+<h3 id="2021-08-02-UPD"><a href="#2021-08-02-UPD" class="headerlink" title="2021.08.02 UPD:"></a>2021.08.02 UPD:</h3><p>可以先建好文件夹然后右键Git Bash Here</p>
+<hr>
+<p>因为自带 $\text{Landscape}$ 主题，因此这个时候就可看到你的博客了！</p>
+<p><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fupload-images.jianshu.io%2Fupload_images%2F15934130-2f1f347b172a7107.jpg%3FimageMogr2%2Fauto-orient%2Fstrip%257CimageView2%2F2%2Fw%2F1240&refer=http%3A%2F%2Fupload-images.jianshu.io&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1631158843&t=34a22477a057a0c3041d578f5f847012"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate   //可以缩写成 hexo g</span><br><span class="line">hexo server     //可以缩写成 hexo s</span><br></pre></td></tr></table></figure>
+<p>说一个小诀窍：你可以<code>hexo g &amp;&amp; hexo s</code>，一步到位</p>
+<h2 id="4-创建-text-GitHub-个人仓库"><a href="#4-创建-text-GitHub-个人仓库" class="headerlink" title="4. 创建 $\text{GitHub}$个人仓库"></a>4. 创建 $\text{GitHub}$个人仓库</h2><p>登录你的GitHub账号，创建一个新的仓库（没有账号的、不会创建的请自行BFS）</p>
+<p><strong>仓库名创建为 <code>你的用户名.github.io</code>，不然无法识别</strong></p>
+<p><img src="https://i.bmp.ovh/imgs/2021/08/6c7ddb3e975f29a8.png"></p>
+<p>选择<code>Public</code></p>
+<h2 id="5-生成-text-SSH-并添加到-text-GitHub"><a href="#5-生成-text-SSH-并添加到-text-GitHub" class="headerlink" title="5. 生成 $\text{SSH}$ 并添加到 $\text{GitHub}$"></a>5. 生成 $\text{SSH}$ 并添加到 $\text{GitHub}$</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name yourname</span><br><span class="line">git config --global user.email youremail</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><figcaption><span>就是你的GitHub用户名，```youremail``` 是你的GitHub的注册邮箱。这是Github用来验证账户的。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">可以用下面的命令检查输入是否正确</span><br><span class="line">```bash</span><br><span class="line">git config user.name</span><br><span class="line">git config user.email</span><br></pre></td></tr></table></figure>
+
+<p>接下来创建SSH，全部点回车就可以了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C youremail</span><br></pre></td></tr></table></figure>
+<p>你大概会在C:\Users\Administrator中找到这个文件夹，记事本打开<code>id_rsa.pub</code>。</p>
+<p>ssh，简单来讲，就是一个秘钥，其中，<code>id_rsa</code>是你这台电脑的私人秘钥，不能给别人看的，<code>id_rsa.pub</code>是公共秘钥，可以随便给别人看。把这个公钥放在GitHub上，这样当你链接GitHub自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利的通过git上传你的文件到GitHub上。</p>
+<p>而后在GitHub的<code>setting</code>中，找到<code>SSH keys</code>的设置选项，点击<code>New SSH key</code><br>把你的<code>id_rsa.pub</code>里面的信息复制进去。</p>
+<p>用下面的代码验证 (无需改动)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-将-text-Hexo-部署到"><a href="#6-将-text-Hexo-部署到" class="headerlink" title="6. 将 $\text{Hexo}$ 部署到"></a>6. 将 $\text{Hexo}$ 部署到</h2><p>打开站点配置文件 <code>_config.yml</code>，翻到最后，修改<code>YourgithubName</code>为你的GitHub账户</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:YourgithubName/YourgithubName.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span>  <span class="comment"># 更新：现在GitHub默认为main，注意一下</span></span><br></pre></td></tr></table></figure>
+
+<p>安装 $\text{deploy-git}$ 部署工具以部署到 $\text{Github}$</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>然后执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean      //清除之前生成的东西 缩写为hexo cl</span><br><span class="line">hexo generate   //生成静态文章 缩写为hexo g</span><br><span class="line">hexo deploy     //部署 缩写为hexo d</span><br></pre></td></tr></table></figure>
+
+<p>另外说一下，<strong>生成和部署</strong>可以合为 <code>hexo g -d</code> 。</p>
+<p>现在，你可以打开 <code>source\_posts</code>，在里面创建<code>Markdown</code>文件，可以在里面写文章了！</p>
+<hr>
+<h1 id="第三部分：-text-Hexo-基本操作"><a href="#第三部分：-text-Hexo-基本操作" class="headerlink" title="第三部分： $\text{Hexo}$ 基本操作"></a>第三部分： $\text{Hexo}$ 基本操作</h1><h2 id="1-设置网站的基本框架"><a href="#1-设置网站的基本框架" class="headerlink" title="1. 设置网站的基本框架"></a>1. 设置网站的基本框架</h2><table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">描述</th>
+<th align="center">注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>title</code></td>
+<td align="center">网站标题</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>subtitle</code></td>
+<td align="center">网站副标题</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>description</code></td>
+<td align="center">网站描述</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>author</code></td>
+<td align="center">作者</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>language</code></td>
+<td align="center">语言</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><code>timezone</code></td>
+<td align="center">时区</td>
+<td align="center">Asia&#x2F;Shanghai</td>
+</tr>
+<tr>
+<td align="center"><code>url</code></td>
+<td align="center">网址</td>
+<td align="center">改成你的网站域名</td>
+</tr>
+<tr>
+<td align="center"><code>root</code></td>
+<td align="center">网站根目录</td>
+<td align="center">不用修改</td>
+</tr>
+<tr>
+<td align="center"><code>permalink</code></td>
+<td align="center">文章的<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/permalinks">永久链接</a>格式</td>
+<td align="center">不建议使用默认格式</td>
+</tr>
+<tr>
+<td align="center"><code>permalink_defaults</code></td>
+<td align="center">永久链接中各部分的默认值</td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h2 id="2-Page（创建新页面）"><a href="#2-Page（创建新页面）" class="headerlink" title="2. Page（创建新页面）"></a>2. Page（创建新页面）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page 页面名称</span><br></pre></td></tr></table></figure>
+<p>系统会自动给你在博客根目录下的 <code>source</code> 文件夹中生成一个新的文件夹，里面有一个 <code>index.md</code>，页面的编辑操作在此文件中进行。</p>
+<h2 id="3-Draft（草稿）"><a href="#3-Draft（草稿）" class="headerlink" title="3. Draft（草稿）"></a>3. Draft（草稿）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new draft newpage</span><br></pre></td></tr></table></figure>
+
+<p>这样会在 <code>source/_draft</code> 中新建一个 <code>newpage.md</code> 文件，如果你的草稿文件写的过程中，想要预览一下，那么可以使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure>
+<p>在本地端口中开启服务预览。</p>
+<p>如果你的草稿文件写完了，想要发表到<code>post</code>中，下面的代码就会自动把<code>newpage.md</code>发送到<code>post</code>中。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish draft newpage</span><br></pre></td></tr></table></figure>
+
+<h1 id="第四部分：-text-Hexo-优化"><a href="#第四部分：-text-Hexo-优化" class="headerlink" title="第四部分： $\text{Hexo}$ 优化"></a>第四部分： $\text{Hexo}$ 优化</h1><h2 id="1-更换主题"><a href="#1-更换主题" class="headerlink" title="1. 更换主题"></a>1. 更换主题</h2><p>在这里，窝推荐两款主题</p>
+<ul>
+<li>$\text{Shana}$ <strong>非常优秀的二次元主题</strong>。缺点是集成的功能比较少，需要自己读代码写文件（开发者似乎大学毕业了，回issue回的比较慢），而且开发者的主要开发方向是PC端</li>
+<li>$\text{NexT}$  <strong>非常优秀、功能极为强大、易于操作的主题</strong>。如果喜欢各种效果实现各种功能，选择这个会比较方便，移动端效果比较好</li>
+</ul>
+<p>由于现在我已经不用Shana主题了，所以用我正在用的NexT主题来说一下</p>
+<p><a target="_blank" rel="noopener" href="http://theme-next.iissnan.com/">NexT官方文档</a>  NexT是有中文文档的。参照官方文档即可</p>
+<h3 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h3><p>有两种方法下载NexT：使用git克隆最新版本和下载稳定版本的压缩包(.zip)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<h3 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h3><p><font color=red size=4>提前声明一下：<code>站点配置文件</code>是你博客根目录下的<code>_config.yml</code>文件，<code>主题配置文件</code>是next主题文件夹下的<code>_config.yml</code>文件</font></p>
+<p>打开 <code>thmems\next</code>，找到 <code>站点配置文件 (_config.yml)</code>。搜索找到 <code>theme: </code> 字段，把后面的 <code>landscape</code> 改成 <code>next</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure>
+
+<p>执行 <code>hexo cl</code> 清除缓存。之后执行 <code>hexo s</code> 便可以在 <code>localhost:4000</code> 中看到博客的预览效果了</p>
+<h3 id="其他内容"><a href="#其他内容" class="headerlink" title="其他内容"></a>其他内容</h3><p>请自行阅读<a target="_blank" rel="noopener" href="http://theme-next.iissnan.com/">NexT官方文档</a></p>
+<h2 id="2-添加-text-RSS-订阅功能"><a href="#2-添加-text-RSS-订阅功能" class="headerlink" title="2. 添加 $\text{RSS}$ 订阅功能"></a>2. 添加 $\text{RSS}$ 订阅功能</h2><p>可以参照我的<a target="_blank" rel="noopener" href="https://ustinianx.com/2020/07/12/Hexo%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0RSS%E8%AE%A2%E9%98%85%E5%8A%9F%E8%83%BD/">这篇文章</a></p>
+<h3 id="安装-text-feed-插件"><a href="#安装-text-feed-插件" class="headerlink" title="安装$\text{feed}$插件"></a>安装$\text{feed}$插件</h3><p>$\text{Hexo}$博客有一个专门生成$\text{RSS xml}$文件的插件<code>hexo-generator-feed</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-feed</span><br></pre></td></tr></table></figure>
+<h3 id="修改站点配置文件"><a href="#修改站点配置文件" class="headerlink" title="修改站点配置文件"></a>修改<code>站点配置文件</code></h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## RSS订阅</span></span><br><span class="line"><span class="attr">plugin:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">hexo-generator-feed</span></span><br><span class="line"><span class="comment">#Feed Atom</span></span><br><span class="line"><span class="attr">feed:</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">atom</span></span><br><span class="line"><span class="attr">path:</span> <span class="string">atom.xml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">limit:</span> <span class="number">20</span></span><br></pre></td></tr></table></figure>
+<!-- ![](https://ae01.alicdn.com/kf/Uabb845f7d7694a81a9e8225c8611c92dZ.jpg) -->
+
+<p>接下来直接执行<code>hexo g</code>就可以生成$\text{xml}$文件</p>
+<h3 id="订阅"><a href="#订阅" class="headerlink" title="订阅"></a>订阅</h3><p>自行Google</p>
+<p>推荐世界第一RSS阅读器 <a target="_blank" rel="noopener" href="https://inoreader.en.softonic.com/"><code>inoreader</code></a></p>
+<h2 id="3-绑定个人域名"><a href="#3-绑定个人域名" class="headerlink" title="3. 绑定个人域名"></a>3. 绑定个人域名</h2><h3 id="首先你需要有一个域名"><a href="#首先你需要有一个域名" class="headerlink" title="首先你需要有一个域名"></a>首先你需要有一个域名</h3><p>域名后缀看自己需求，<code>.com</code>比较贵，可以选择近年来比较火的<code>.top .xyz</code>之类的，这类的便宜，还有个性。第一年我用的<code>.com</code>，后来就换成<code>.icu</code>了</p>
+<p>可以选择<br><a target="_blank" rel="noopener" href="https://wanwang.aliyun.com/">万网</a><br>或者<br><a target="_blank" rel="noopener" href="https://www.west.cn/">西部数码</a><br>之类的</p>
+<h3 id="获取-text-IP-地址"><a href="#获取-text-IP-地址" class="headerlink" title="获取 $\text{IP}$ 地址"></a>获取 $\text{IP}$ 地址</h3><p>在此之前需要获取自己 GitHub 的二级域名的 IP 地址。Git Bash下ping自己博客的地址即可获得。</p>
+<h3 id="解析域名"><a href="#解析域名" class="headerlink" title="解析域名"></a>解析域名</h3><p>在你购买网站的控制台中找到域名解析，将刚刚得到的 ip 地址填入后面的“对应值（或者叫记录值）”，选择A记录，其他不用动。<br>之后在主机名中分别填入 <code>www</code> 和 <code>@</code>。刷新一下，大概就成功了。</p>
+<p><img src="https://i.bmp.ovh/imgs/2021/08/b866ca35e9eb33c6.png"></p>
+<h3 id="text-GitHub-仓库的-text-custom-domain-绑定域名"><a href="#text-GitHub-仓库的-text-custom-domain-绑定域名" class="headerlink" title="$\text{GitHub}$ 仓库的 $\text{custom domain}$ 绑定域名"></a>$\text{GitHub}$ 仓库的 $\text{custom domain}$ 绑定域名</h3><p>进入仓库中， 点击<code>setting</code>往下滑 会看到<code>custom domain</code></p>
+<p>随后将自己购买的域名填写进去（纯域名，不要加www之类的任何东西）</p>
+<p><img src="https://i.bmp.ovh/imgs/2021/08/84912995173b1fb3.png"></p>
+<h3 id="设置-text-CNAME"><a href="#设置-text-CNAME" class="headerlink" title="设置 $\text{CNAME}$"></a>设置 $\text{CNAME}$</h3><p>进入Hexo根目录下的 <code>source</code> 文件夹，添加一个CNAME。<font color=RED>注意不要添加任何后缀名！</font></p>
+<p><img src="https://s1.ax1x.com/2020/08/07/ahwVQU.png"></p>
+<p>在里面填入你的域名</p>
+<p><img src="https://i.bmp.ovh/imgs/2021/08/a371e5b3ea311d99.png"></p>
+<h2 id="4-国内外分流"><a href="#4-国内外分流" class="headerlink" title="4. 国内外分流"></a>4. 国内外分流</h2><p>使用 Coding 或 Gitee 完成分流</p>
+<h2 id="5-text-SEO-优化"><a href="#5-text-SEO-优化" class="headerlink" title="5. $\text{SEO}$ 优化"></a>5. $\text{SEO}$ 优化</h2><p>我们需要让搜索引擎收录这个网站，别人才能搜索到博客里的内容，那么这个时候我们就需要做一下SEO优化了</p>
+<p>SEO优化还能使得</p>
+<blockquote>
+<p>SEO是由英文Search Engine Optimization缩写而来， 中文意译为“搜索引擎优化”。SEO是指通过站内优化比如网站结构调整、网站内容建设、网站代码优化等以及站外优化。</p>
+</blockquote>
+<p>比较重要的是谷歌，百度，以及必应的优化，其他搜索引擎此处也就不细讲了</p>
+<h3 id="站点地图"><a href="#站点地图" class="headerlink" title="站点地图"></a>站点地图</h3><p>首先安装插件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
+
+<p>在<code>站点配置文件</code>添加以下代码</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Sitemap</span></span><br><span class="line"><span class="attr">sitemap:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">sitemap.xml</span></span><br><span class="line">  <span class="attr">url:</span> <span class="string">https://wincer.space/</span></span><br><span class="line"><span class="attr">baidusitemap:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">baidusitemap.xml</span></span><br><span class="line">  <span class="attr">url:</span> <span class="string">https://wincer.space/</span></span><br></pre></td></tr></table></figure>
+<h3 id="百度SEO"><a href="#百度SEO" class="headerlink" title="百度SEO"></a>百度SEO</h3><p>登录 <a target="_blank" rel="noopener" href="https://ziyuan.baidu.com/linksubmit/index">百度站长平台</a>，在站点管理中添加自己的网站。</p>
+<p>可以选择最简单的 CNAME 验证。在域名解析界面添加一条 <code>CNAME</code> 记录，前面 <code>code-xxxxxxxx</code> 部分填在主机记录里，后面的 <code>ziyuan.baidu.com</code> 填在记录值里</p>
+<p><img src="https://s1.328888.xyz/2022/04/02/LhRfd.png"></p>
+<p>还可以选择 $\text{HTML}$标签 验证，我们需要获取的是红框内的这串代码</p>
+<p><img src="https://s1.ax1x.com/2020/08/07/ahDIpt.png"></p>
+<p>打开<code>站点配置文件</code>，添加以下两行，并把刚才的代码填在baidu那一行之后，注意与冒号之间要有空格。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">google_site_verification:</span> </span><br><span class="line"><span class="attr">baidu-site-verification:</span> </span><br></pre></td></tr></table></figure>
+
+<p>然后执行一下 <code>hexo cl &amp;&amp; hexo g</code>，在 <code>public</code> 中找到 <code>baidusitemap.xml</code> 和 <code>sitemap.xml</code>，用VSCode的查找和替换功能，把所有的 <code>http://yoursite.com/</code> 换成我们自己的域名。然后不需要<code>generate</code>，直接<code>deploy</code>就可以了。</p>
+<h4 id="百度主动提交"><a href="#百度主动提交" class="headerlink" title="百度主动提交"></a>百度主动提交</h4><p>执行一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-baidu-url-submit --save</span><br></pre></td></tr></table></figure>
+<p>然后在<code>站点配置文件</code>中插入，填入你的<code>token</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Baidu主动推送</span></span><br><span class="line"><span class="attr">baidu_url_submit:</span></span><br><span class="line">  <span class="attr">count:</span> <span class="number">5</span> <span class="comment">## 提交最新的五个链接</span></span><br><span class="line">  <span class="attr">host:</span>  <span class="comment">## 百度站长平台中注册的域名</span></span><br><span class="line">  <span class="attr">token:</span>  <span class="comment">## 准入秘钥</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">baidu_urls.txt</span> <span class="comment">## 文本文档的地址， 新链接会保存在此文本文档里</span></span><br></pre></td></tr></table></figure>
+<p>$\text{token}$ 是<code>主动推送（实时）</code>中的</p>
+<p><img src="https://s1.ax1x.com/2020/08/07/ahgVln.png"></p>
+<p>随后在<code>主题配置文件</code>中搜索找到 <code>baidu_push</code> 段落，将其改为</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">baidu_push:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>之后在 <code>themes\next\layout\_partials\head.swig</code> 中搜索 <code>baidu_site_verification</code></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="operator">%</span> <span class="keyword">if</span> theme.baidu_site_verification <span class="operator">%</span>&#125;</span><br><span class="line">  <span class="operator">&lt;</span>meta name<span class="operator">=</span><span class="string">&quot;baidu-site-verification&quot;</span> content<span class="operator">=</span><span class="string">&quot;&#123;&#123; theme.qihu_site_verification &#125;&#125;&quot;</span> <span class="operator">/&gt;</span></span><br><span class="line">&#123;<span class="operator">%</span> endif <span class="operator">%</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>把 <code>content</code> 后面换成自己的token，<font color=RED>只需要刚才的token，括号和引号都不需要。</font></p>
+<h3 id="Google-SEO"><a href="#Google-SEO" class="headerlink" title="Google SEO"></a>Google SEO</h3><p>需要小梯子</p>
+<p>Google更简单，而且收录更快</p>
+<p>登录到 <a target="_blank" rel="noopener" href="https://search.google.com/search-console?hl=zh-CN">Google Search Console</a>，首先选择资源类型，一般选择网域</p>
+<p>Google 会自动帮你完成验证，或者指引你进行DNS验证，非常简便。如果没有成功，那么按照指导验证。比如 HTML 验证，复制 HTML 代码中的部分内容，填到刚才 <code>themes\next\layout\_partials\head.swig</code> 中的相应字段中。</p>
+<p>然后提交站点地图</p>
+<p><img src="https://s1.328888.xyz/2022/04/02/L4Rmq.png"></p>
+<h3 id="Bing-SEO"><a href="#Bing-SEO" class="headerlink" title="Bing SEO"></a>Bing SEO</h3><p>同理，并且可以从 Google 导入</p>
+<h3 id="360-SEO"><a href="#360-SEO" class="headerlink" title="360 SEO"></a>360 SEO</h3><p>大同小异，需要注意的是二级站点需要手动添加</p>
+<h2 id="搜狗-SEO"><a href="#搜狗-SEO" class="headerlink" title="搜狗 SEO"></a>搜狗 SEO</h2><p>搜狗不支持CNAME验证，只能选择文件验证或是HTML验证，而且需要备案号和身份验证</p>
+<h2 id="6-更换字体"><a href="#6-更换字体" class="headerlink" title="6. 更换字体"></a>6. 更换字体</h2><p>在 <code>主题配置文件</code> 中，查找 <code>font</code></p>
+<p>修改为</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">font:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.bmp.ovh/imgs/2021/08/e8aa61f7309555be.png"></p>
+<p>随后打开<a target="_blank" rel="noopener" href="https://fonts.google.com/">Google Font</a>，挑选字体</p>
+<p>然后可以自由设置lobal、title、heading这些不同区域的字体<br><img src="https://i.bmp.ovh/imgs/2021/08/340a546c9410e8f6.png"></p>
+<h2 id="7-侧边栏目录跳转的修复"><a href="#7-侧边栏目录跳转的修复" class="headerlink" title="7. 侧边栏目录跳转的修复"></a>7. 侧边栏目录跳转的修复</h2><p>$\text{NexT}$ 的 <code>pull request</code> 里面有关于这个问题的解决，参见 <a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next/pull/1540/commits/ec521c927dc10255977324284c1c667f2e220da7">fix: Chinese TOC cannot jump #1540</a></p>
+<p>修改一下 <code>/themes/next/source/js/utils.js</code> 的部分代码即可</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">registerSidebarTOC</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> navItems = <span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;.post-toc li&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> sections = [...navItems].<span class="title function_">map</span>(<span class="function"><span class="params">element</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">var</span> link = element.<span class="title function_">querySelector</span>(<span class="string">&#x27;a.nav-link&#x27;</span>);</span><br><span class="line">      <span class="keyword">var</span> target = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="built_in">decodeURI</span>(link.<span class="title function_">getAttribute</span>(<span class="string">&#x27;href&#x27;</span>)).<span class="title function_">replace</span>(<span class="string">&#x27;#&#x27;</span>, <span class="string">&#x27;&#x27;</span>));</span><br><span class="line">      <span class="comment">// TOC item animation navigate.</span></span><br><span class="line">      link.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">        event.<span class="title function_">preventDefault</span>();</span><br><span class="line">        <span class="comment">// var target = document.getElementById(event.currentTarget.getAttribute(&#x27;href&#x27;).replace(&#x27;#&#x27;, &#x27;&#x27;));</span></span><br><span class="line">        <span class="keyword">var</span> offset = target.<span class="title function_">getBoundingClientRect</span>().<span class="property">top</span> + <span class="variable language_">window</span>.<span class="property">scrollY</span>;</span><br><span class="line">        <span class="variable language_">window</span>.<span class="title function_">anime</span>(&#123;</span><br><span class="line">          targets  : <span class="variable language_">document</span>.<span class="property">scrollingElement</span>,</span><br><span class="line">          duration : <span class="number">500</span>,</span><br><span class="line">          easing   : <span class="string">&#x27;linear&#x27;</span>,</span><br><span class="line">          <span class="attr">scrollTop</span>: offset + <span class="number">10</span></span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="comment">// return document.getElementById(link.getAttribute(&#x27;href&#x27;).replace(&#x27;#&#x27;, &#x27;&#x27;));</span></span><br><span class="line">      <span class="keyword">return</span> target;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.bmp.ovh/imgs/2022/04/02/9bbb3a71991df759.png"></p>
+<h1 id="第五部分：-text-Hexo-功能"><a href="#第五部分：-text-Hexo-功能" class="headerlink" title="第五部分： $\text{Hexo}$ 功能"></a>第五部分： $\text{Hexo}$ 功能</h1><h2 id="1-添加音乐功能"><a href="#1-添加音乐功能" class="headerlink" title="1. 添加音乐功能"></a>1. 添加音乐功能</h2><h3 id="直接插入文章当中"><a href="#直接插入文章当中" class="headerlink" title="直接插入文章当中"></a>直接插入文章当中</h3><h4 id="text-iframe-标签"><a href="#text-iframe-标签" class="headerlink" title="$\text{iframe}$标签"></a>$\text{iframe}$标签</h4><p>相当的简单</p>
+<p>先到网易云音乐中中搜出你想要的音乐，然后点击<strong>生成外链播放器</strong></p>
+<p>所需要的所有代码都在这个框框内了</p>
+<p><img src="https://i.bmp.ovh/imgs/2021/08/4dda7a307388b911.png"></p>
+<p>然后把这个代码粘贴到你的文章的$\text{.md}$文件中，就可以显示了</p>
+<p><img src="https://img-service.csdnimg.cn/img_convert/74fbf69d9a51d681dc4b7e3fbfe31880.png"></p>
+<h3 id="text-JavaScript-标签"><a href="#text-JavaScript-标签" class="headerlink" title="$\text{JavaScript}$标签"></a>$\text{JavaScript}$标签</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;http://www.xiami.com/widget/player-single?uid=32329501&amp;sid=1776238762&amp;mode=js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="使用-text-Hexo-tag-Aplayer-插件"><a href="#使用-text-Hexo-tag-Aplayer-插件" class="headerlink" title="使用$\text{Hexo-tag-Aplayer}$插件"></a>使用$\text{Hexo-tag-Aplayer}$插件</h3><p>$\text{hexo-tag-aplayer}$是$\text{Aplayer}$在$\text{Hexo}$上的插件，其配置可以参考<a target="_blank" rel="noopener" href="https://github.com/MoePlayer/hexo-tag-aplayer/blob/master/docs/README-zh_cn.md">官方文档</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-tag-aplayer --save</span><br></pre></td></tr></table></figure>
+
+<p>在文章的markdown文档里添加</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="operator">%</span> aplayer <span class="string">&quot;她的睫毛&quot;</span> <span class="string">&quot;周杰伦&quot;</span> <span class="string">&quot;http://home.ustc.edu.cn/~mmmwhy/%d6%dc%bd%dc%c2%d7%20-%20%cb%fd%b5%c4%bd%de%c3%ab.mp3&quot;</span>  <span class="string">&quot;http://home.ustc.edu.cn/~mmmwhy/jay.jpg&quot;</span> <span class="string">&quot;autoplay=false&quot;</span> <span class="operator">%</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img-service.csdnimg.cn/img_convert/ab972faca09544bce0c902b4e7f4d9c5.png"></p>
+<hr>
+<p><strong>以上两种都只能实现单篇文章内的播放，下面这一种是将播放器部署在所有界面</strong></p>
+<h3 id="主页音乐播放器"><a href="#主页音乐播放器" class="headerlink" title="主页音乐播放器"></a>主页音乐播放器</h3><p>可以控制是否自动播放（<del>自动播放移动端不支持</del>）</p>
+<p>修改  <code>themes/next/layout/_macro/sidebar.swig</code>文件</p>
+<p>添加播放器内容</p>
+<figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="language-xml"><span class="comment">&lt;!-- 音乐播放器 --&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    </span><span class="template-tag">&#123;% <span class="name"><span class="name">if</span></span> theme.background_music %&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">iframe</span> <span class="attr">frameborder</span>=<span class="string">&quot;no&quot;</span> <span class="attr">border</span>=<span class="string">&quot;0&quot;</span> <span class="attr">marginwidth</span>=<span class="string">&quot;0&quot;</span> <span class="attr">marginheight</span>=<span class="string">&quot;0&quot;</span> <span class="attr">width</span>=<span class="string">330</span> <span class="attr">height</span>=<span class="string">86</span> <span class="attr">src</span>=<span class="string">&quot;</span></span></span><span class="template-variable">&#123;&#123; theme.background_music &#125;&#125;</span><span class="language-xml"><span class="tag"><span class="string">&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    </span><span class="template-tag">&#123;% <span class="name"><span class="name">endif</span></span> %&#125;</span><span class="language-xml"></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>大概在这个位置</p>
+<p><img src="https://i.bmp.ovh/imgs/2021/08/3a7327536258d31d.png"></p>
+<p>在 <code>themes/next/_config.yml</code>主题配置文件中添加歌单地址配置</p>
+<p><code>background_music: //music.163.com/outchain/player?type=0&amp;id=2120628564&amp;auto=1&amp;height=66</code></p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">background_music:</span> </span><br></pre></td></tr></table></figure>
+<p>如图所示填入歌曲的部分HTML代码</p>
+<h3 id="添加歌单"><a href="#添加歌单" class="headerlink" title="添加歌单"></a>添加歌单</h3><p>创建歌单，复制代码<br><img src="https://img-service.csdnimg.cn/img_convert/2030c8d1caec3531c2e5f29fea22be8a.png"></p>
+<p>把 <code>height=90</code>改成 <code>height=66</code></p>
+<p>最后贴一张我的博客的效果图</p>
+<p><img src="https://img-service.csdnimg.cn/img_convert/3fea7cbbcb44d39fc27c426ac1d090ba.png"></p>
+<hr>
+<h3 id="也可以单独的做一个歌单页面"><a href="#也可以单独的做一个歌单页面" class="headerlink" title="也可以单独的做一个歌单页面"></a>也可以单独的做一个歌单页面</h3><p>最新版的 $\text{hexo-tag-aplayer}$ 已经支持了$\text{MetingJS}$的使用，可以直接解析网络平台的歌曲，首先要在站点配置文件中开启 $\text{meting}$ 模式，添加以下代码在配置文件的最后：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">aplayer:</span></span><br><span class="line">  <span class="attr">meting:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>复制歌单的链接，然后复制歌单的$\text{id}$，例如 <a target="_blank" rel="noopener" href="https://music.163.com/playlist?id=523845661&userid=46562117">https://music.163.com/playlist?id=523845661&amp;userid=46562117</a> ，这个歌单的id就是523845661，公司名可以是tencent、netease或是其他公司，下面给出一个例子，打开 &#x2F;Hexo&#x2F;source&#x2F;playlist&#x2F;index.md文件，输入：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="operator">%</span> meting <span class="string">&quot;7634442256&quot;</span> <span class="string">&quot;tencent&quot;</span> <span class="string">&quot;playlist&quot;</span> <span class="string">&quot;theme:#555&quot;</span> <span class="string">&quot;mutex:true&quot;</span> <span class="string">&quot;listmaxheight:340px&quot;</span> <span class="string">&quot;preload:auto&quot;</span> <span class="operator">%</span>&#125;</span><br></pre></td></tr></table></figure>
+<p>这就是一个<a target="_blank" rel="noopener" href="https://y.qq.com/n/m/detail/taoge/index.html?id=7634442256">$\text{QQ}$音乐</a>的歌单</p>
+<p><strong>最终效果</strong></p>
+<p><img src="https://i.bmp.ovh/imgs/2021/08/16537acd1ac46c85.png" alt="效果还是不错的"></p>
+<h2 id="2-代码块一键复制"><a href="#2-代码块一键复制" class="headerlink" title="2. 代码块一键复制"></a>2. 代码块一键复制</h2><h3 id="1-新建代码复制模块文件"><a href="#1-新建代码复制模块文件" class="headerlink" title="1. 新建代码复制模块文件"></a>1. 新建代码复制模块文件</h3><p>在<code>/themes/next/layout/_third-party</code>下新建文件<code>copy-code.swig</code>，写入代码</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="operator">%</span> <span class="keyword">if</span> theme.codeblock.copy_button.enable <span class="operator">%</span>&#125;</span><br><span class="line">  <span class="operator">&lt;</span>style<span class="operator">&gt;</span></span><br><span class="line">    .copy<span class="operator">-</span>btn &#123;</span><br><span class="line">      display: inline<span class="operator">-</span>block;</span><br><span class="line">      padding: 6px 12px;</span><br><span class="line">      font<span class="operator">-</span>size: 13px;</span><br><span class="line">      font<span class="operator">-</span>weight: <span class="number">700</span>;</span><br><span class="line">      line<span class="operator">-</span>height: 20px;</span><br><span class="line">      color: #<span class="number">333</span>;</span><br><span class="line">      white<span class="operator">-</span>space: nowrap;</span><br><span class="line">      vertical<span class="operator">-</span>align: middle;</span><br><span class="line">      cursor: pointer;</span><br><span class="line">      background<span class="operator">-</span>color: #eee;</span><br><span class="line">      background<span class="operator">-</span>image: linear<span class="operator">-</span>gradient(#fcfcfc, #eee);</span><br><span class="line">      border: 1px solid #d5d5d5;</span><br><span class="line">      border<span class="operator">-</span>radius: 3px;</span><br><span class="line">      user<span class="operator">-</span>select: none;</span><br><span class="line">      outline: <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .highlight<span class="operator">-</span>wrap .copy<span class="operator">-</span>btn &#123;</span><br><span class="line">      transition: opacity .3s ease<span class="operator">-</span><span class="keyword">in</span><span class="operator">-</span>out;</span><br><span class="line">      opacity: <span class="number">0</span>;</span><br><span class="line">      padding: 2px 6px;</span><br><span class="line">      position: absolute;</span><br><span class="line">      right: 4px;</span><br><span class="line">      top: 8px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .highlight<span class="operator">-</span>wrap:hover .copy<span class="operator">-</span>btn,</span><br><span class="line">    .highlight<span class="operator">-</span>wrap .copy<span class="operator">-</span>btn:focus &#123;</span><br><span class="line">      opacity: <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    .highlight<span class="operator">-</span>wrap &#123;</span><br><span class="line">      position: relative;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="operator">&lt;/</span>style<span class="operator">&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="operator">&lt;</span>script<span class="operator">&gt;</span></span><br><span class="line">    $(&#x27;.highlight&#x27;).each(function (i, e) &#123;</span><br><span class="line">      <span class="keyword">var</span> <span class="variable">$wrap</span> <span class="operator">=</span> $(&#x27;<span class="operator">&lt;</span>div<span class="operator">&gt;</span>&#x27;).addClass(&#x27;highlight<span class="operator">-</span>wrap&#x27;)</span><br><span class="line">      $(e).after(<span class="variable">$wrap</span>)</span><br><span class="line">      <span class="variable">$wrap</span>.append($(&#x27;<span class="operator">&lt;</span>button<span class="operator">&gt;</span>&#x27;).addClass(&#x27;copy<span class="operator">-</span>btn&#x27;).append(&#x27;&#123;&#123;__(<span class="string">&quot;post.copy_button&quot;</span>)&#125;&#125;&#x27;).on(&#x27;click&#x27;, function (e) &#123;</span><br><span class="line">        <span class="keyword">var</span> code <span class="operator">=</span> $(this).parent().find(&#x27;.code&#x27;).find(&#x27;.line&#x27;).map(function (i, e) &#123;</span><br><span class="line">          <span class="keyword">return</span> $(e).text()</span><br><span class="line">        &#125;).toArray().join(&#x27;\n&#x27;)</span><br><span class="line">        <span class="keyword">var</span> ta <span class="operator">=</span> document.createElement(&#x27;textarea&#x27;)</span><br><span class="line">        document.body.appendChild(ta)</span><br><span class="line">        ta.style.position <span class="operator">=</span> &#x27;absolute&#x27;</span><br><span class="line">        ta.style.top <span class="operator">=</span> &#x27;0px&#x27;</span><br><span class="line">        ta.style.left <span class="operator">=</span> &#x27;0px&#x27;</span><br><span class="line">        ta.value <span class="operator">=</span> code</span><br><span class="line">        ta.select()</span><br><span class="line">        ta.focus()</span><br><span class="line">        <span class="keyword">var</span> result <span class="operator">=</span> document.execCommand(&#x27;copy&#x27;)</span><br><span class="line">        document.body.removeChild(ta)</span><br><span class="line">        &#123;<span class="operator">%</span> <span class="keyword">if</span> theme.codeblock.copy_button.show_result <span class="operator">%</span>&#125;</span><br><span class="line">          <span class="keyword">if</span>(result)$(this).text(&#x27;&#123;&#123;__(<span class="string">&quot;post.copy_success&quot;</span>)&#125;&#125;&#x27;)</span><br><span class="line">          <span class="keyword">else</span> $(this).text(&#x27;&#123;&#123;__(<span class="string">&quot;post.copy_failure&quot;</span>)&#125;&#125;&#x27;)</span><br><span class="line">        &#123;<span class="operator">%</span> endif <span class="operator">%</span>&#125;</span><br><span class="line">        $(this).blur()</span><br><span class="line">      &#125;)).on(&#x27;mouseleave&#x27;, function (e) &#123;</span><br><span class="line">        <span class="keyword">var</span> <span class="variable">$b</span> <span class="operator">=</span> $(this).find(&#x27;.copy<span class="operator">-</span>btn&#x27;)</span><br><span class="line">        setTimeout(function () &#123;</span><br><span class="line">          <span class="variable">$b</span>.text(&#x27;&#123;&#123;__(<span class="string">&quot;post.copy_button&quot;</span>)&#125;&#125;&#x27;)</span><br><span class="line">        &#125;, <span class="number">300</span>)</span><br><span class="line">      &#125;).append(e)</span><br><span class="line">    &#125;)</span><br><span class="line">  <span class="operator">&lt;/</span>script<span class="operator">&gt;</span></span><br><span class="line">&#123;<span class="operator">%</span> endif <span class="operator">%</span>&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-引用文件"><a href="#2-引用文件" class="headerlink" title="2. 引用文件"></a>2. 引用文件</h3><p>编辑<code>/themes/next/layout/_layout.swig</code>文件，在文件末尾<code>&lt;/body&gt;</code>前添加一行代码</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="operator">%</span> include &#x27;_third<span class="operator">-</span>party<span class="operator">/</span>copy<span class="operator">-</span>code.swig&#x27; <span class="operator">%</span>&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.bmp.ovh/imgs/2021/08/f1943d6895088094.png"></p>
+<h3 id="3-添加按钮上显示的语言"><a href="#3-添加按钮上显示的语言" class="headerlink" title="3. 添加按钮上显示的语言"></a>3. 添加按钮上显示的语言</h3><p>在<code>/themes/next/languages/zh-Hans.yml</code>文件的<strong>post</strong>板块中添加下列代码</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">copy_button:</span> <span class="string">复制</span></span><br><span class="line"><span class="attr">copy_success:</span> <span class="string">复制成功</span></span><br><span class="line"><span class="attr">copy_failure:</span> <span class="string">复制失败</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.bmp.ovh/imgs/2021/08/a102306bc2fe1b19.png"></p>
+<h3 id="4-在主题配置文件中添加开关"><a href="#4-在主题配置文件中添加开关" class="headerlink" title="4. 在主题配置文件中添加开关"></a>4. 在主题配置文件中添加开关</h3><p>需要注意的是，NexT version 5.1.4是没有codeblock选项的，需要在<code>主题配置文件</code>中添加</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">codeblock:</span></span><br><span class="line">  <span class="attr">border_radius:</span></span><br><span class="line">  <span class="attr">copy_button:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># Show text copy result·</span></span><br><span class="line">    <span class="attr">show_result:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://i.bmp.ovh/imgs/2021/08/b548e9932c0dc87e.png"></p>
+<h2 id="3-添加顶部加载条"><a href="#3-添加顶部加载条" class="headerlink" title="3. 添加顶部加载条"></a>3. 添加顶部加载条</h2><p>配置<code>主题配置文件_config.yml</code>，将<code>pace: false</code>改为<code>pace: true</code>即可</p>
+<p>有多种样式可供选择</p>
+<p><img src="https://i.bmp.ovh/imgs/2021/08/46f82ef18b29ce20.png"></p>
+<h2 id="4-修改底部标签"><a href="#4-修改底部标签" class="headerlink" title="4. 修改底部标签"></a>4. 修改底部标签</h2><p>打开<code>/themes/next/layout/_macro/post.swig</code>，搜索 <code>rel=&quot;tag&quot;&gt;</code>，将 <code>#</code> 换成 </p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">&lt;</span>i <span class="keyword">class</span>=&quot;<span class="title class_">fa</span> <span class="title class_">fa</span>-<span class="title class_">tag</span>&quot;&gt;&lt;/<span class="title class_">i</span>&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.bmp.ovh/imgs/2021/08/4efceeb912d4b27f.png"></p>
+<h2 id="5-文本提示"><a href="#5-文本提示" class="headerlink" title="5. 文本提示"></a>5. 文本提示</h2><p>插件为 <code>hexo-tag-hint</code>，实例：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">穹妹经常带着&#123;% hint &#x27;黑色的兔子布偶&#x27; &#x27;小时候悠送的&#x27; %&#125;，在悠的面前常常抱怨且任性</span><br></pre></td></tr></table></figure>
+<p>效果</p>
+<p><strong>穹妹经常带着<span class="hint--info hint--rounded hint--top" data-hint="小时候悠送的" ontouchstart>黑色的兔子布偶</span>，在悠的面前常常抱怨且任性</strong></p>
+<p>注意字符串中有单引号的时候<strong>加反斜线转义</strong></p>
+<h2 id="6-自定义子页面"><a href="#6-自定义子页面" class="headerlink" title="6. 自定义子页面"></a>6. 自定义子页面</h2><p>Hexo 自带的几个子页面未免显得太多单薄，因此我添加了豆瓣读书，豆瓣电影的子页面来充实内容</p>
+<center><font size=5 color=Orange>未完待续</font></center>
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Wincer
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://wincer.space/posts/Hexo-Guide/" title="Hexo博客搭建全面指南+基于NexT的优化">https://wincer.space/posts/Hexo-Guide/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="https://twitter.com/Wincer2006">
+            <span class="icon">
+              <i class="fab fa-twitter"></i>
+            </span>
+
+            <span class="label">Twitter</span>
+          </a>
+        </div>
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i></a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/posts/undefined/" rel="next" title="Hello World">
+      Hello World <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A-text-Hexo-%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">第一部分： $\text{Hexo}$ 简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A-%E9%85%8D%E7%BD%AE-text-Hexo"><span class="nav-number">2.</span> <span class="nav-text">第二部分： 配置 $\text{Hexo}$</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85-text-Git"><span class="nav-number">2.1.</span> <span class="nav-text">1. 安装 $\text{Git}$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85-text-Node-JS"><span class="nav-number">2.2.</span> <span class="nav-text">2. 安装 $\text{Node.JS}$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%AE%89%E8%A3%85-text-Hexo"><span class="nav-number">2.3.</span> <span class="nav-text">3. 安装 $\text{Hexo}$</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-08-02-UPD"><span class="nav-number">2.3.1.</span> <span class="nav-text">2021.08.02 UPD:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%88%9B%E5%BB%BA-text-GitHub-%E4%B8%AA%E4%BA%BA%E4%BB%93%E5%BA%93"><span class="nav-number">2.4.</span> <span class="nav-text">4. 创建 $\text{GitHub}$个人仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E7%94%9F%E6%88%90-text-SSH-%E5%B9%B6%E6%B7%BB%E5%8A%A0%E5%88%B0-text-GitHub"><span class="nav-number">2.5.</span> <span class="nav-text">5. 生成 $\text{SSH}$ 并添加到 $\text{GitHub}$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%B0%86-text-Hexo-%E9%83%A8%E7%BD%B2%E5%88%B0"><span class="nav-number">2.6.</span> <span class="nav-text">6. 将 $\text{Hexo}$ 部署到</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%EF%BC%9A-text-Hexo-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">第三部分： $\text{Hexo}$ 基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%AB%99%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6"><span class="nav-number">3.1.</span> <span class="nav-text">1. 设置网站的基本框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Page%EF%BC%88%E5%88%9B%E5%BB%BA%E6%96%B0%E9%A1%B5%E9%9D%A2%EF%BC%89"><span class="nav-number">3.2.</span> <span class="nav-text">2. Page（创建新页面）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Draft%EF%BC%88%E8%8D%89%E7%A8%BF%EF%BC%89"><span class="nav-number">3.3.</span> <span class="nav-text">3. Draft（草稿）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86%EF%BC%9A-text-Hexo-%E4%BC%98%E5%8C%96"><span class="nav-number">4.</span> <span class="nav-text">第四部分： $\text{Hexo}$ 优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98"><span class="nav-number">4.1.</span> <span class="nav-text">1. 更换主题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E4%B8%BB%E9%A2%98"><span class="nav-number">4.1.1.</span> <span class="nav-text">下载主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E7%94%A8%E4%B8%BB%E9%A2%98"><span class="nav-number">4.1.2.</span> <span class="nav-text">启用主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%86%85%E5%AE%B9"><span class="nav-number">4.1.3.</span> <span class="nav-text">其他内容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%B7%BB%E5%8A%A0-text-RSS-%E8%AE%A2%E9%98%85%E5%8A%9F%E8%83%BD"><span class="nav-number">4.2.</span> <span class="nav-text">2. 添加 $\text{RSS}$ 订阅功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-text-feed-%E6%8F%92%E4%BB%B6"><span class="nav-number">4.2.1.</span> <span class="nav-text">安装$\text{feed}$插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%AB%99%E7%82%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">4.2.2.</span> <span class="nav-text">修改站点配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A2%E9%98%85"><span class="nav-number">4.2.3.</span> <span class="nav-text">订阅</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%BB%91%E5%AE%9A%E4%B8%AA%E4%BA%BA%E5%9F%9F%E5%90%8D"><span class="nav-number">4.3.</span> <span class="nav-text">3. 绑定个人域名</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A6%96%E5%85%88%E4%BD%A0%E9%9C%80%E8%A6%81%E6%9C%89%E4%B8%80%E4%B8%AA%E5%9F%9F%E5%90%8D"><span class="nav-number">4.3.1.</span> <span class="nav-text">首先你需要有一个域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96-text-IP-%E5%9C%B0%E5%9D%80"><span class="nav-number">4.3.2.</span> <span class="nav-text">获取 $\text{IP}$ 地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E5%9F%9F%E5%90%8D"><span class="nav-number">4.3.3.</span> <span class="nav-text">解析域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#text-GitHub-%E4%BB%93%E5%BA%93%E7%9A%84-text-custom-domain-%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D"><span class="nav-number">4.3.4.</span> <span class="nav-text">$\text{GitHub}$ 仓库的 $\text{custom domain}$ 绑定域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE-text-CNAME"><span class="nav-number">4.3.5.</span> <span class="nav-text">设置 $\text{CNAME}$</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%9B%BD%E5%86%85%E5%A4%96%E5%88%86%E6%B5%81"><span class="nav-number">4.4.</span> <span class="nav-text">4. 国内外分流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-text-SEO-%E4%BC%98%E5%8C%96"><span class="nav-number">4.5.</span> <span class="nav-text">5. $\text{SEO}$ 优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AB%99%E7%82%B9%E5%9C%B0%E5%9B%BE"><span class="nav-number">4.5.1.</span> <span class="nav-text">站点地图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BE%E5%BA%A6SEO"><span class="nav-number">4.5.2.</span> <span class="nav-text">百度SEO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%99%BE%E5%BA%A6%E4%B8%BB%E5%8A%A8%E6%8F%90%E4%BA%A4"><span class="nav-number">4.5.2.1.</span> <span class="nav-text">百度主动提交</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Google-SEO"><span class="nav-number">4.5.3.</span> <span class="nav-text">Google SEO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bing-SEO"><span class="nav-number">4.5.4.</span> <span class="nav-text">Bing SEO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#360-SEO"><span class="nav-number">4.5.5.</span> <span class="nav-text">360 SEO</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%9C%E7%8B%97-SEO"><span class="nav-number">4.6.</span> <span class="nav-text">搜狗 SEO</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E6%9B%B4%E6%8D%A2%E5%AD%97%E4%BD%93"><span class="nav-number">4.7.</span> <span class="nav-text">6. 更换字体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E4%BE%A7%E8%BE%B9%E6%A0%8F%E7%9B%AE%E5%BD%95%E8%B7%B3%E8%BD%AC%E7%9A%84%E4%BF%AE%E5%A4%8D"><span class="nav-number">4.8.</span> <span class="nav-text">7. 侧边栏目录跳转的修复</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86%EF%BC%9A-text-Hexo-%E5%8A%9F%E8%83%BD"><span class="nav-number">5.</span> <span class="nav-text">第五部分： $\text{Hexo}$ 功能</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90%E5%8A%9F%E8%83%BD"><span class="nav-number">5.1.</span> <span class="nav-text">1. 添加音乐功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E6%8F%92%E5%85%A5%E6%96%87%E7%AB%A0%E5%BD%93%E4%B8%AD"><span class="nav-number">5.1.1.</span> <span class="nav-text">直接插入文章当中</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#text-iframe-%E6%A0%87%E7%AD%BE"><span class="nav-number">5.1.1.1.</span> <span class="nav-text">$\text{iframe}$标签</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#text-JavaScript-%E6%A0%87%E7%AD%BE"><span class="nav-number">5.1.2.</span> <span class="nav-text">$\text{JavaScript}$标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-text-Hexo-tag-Aplayer-%E6%8F%92%E4%BB%B6"><span class="nav-number">5.1.3.</span> <span class="nav-text">使用$\text{Hexo-tag-Aplayer}$插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E9%A1%B5%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8"><span class="nav-number">5.1.4.</span> <span class="nav-text">主页音乐播放器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%AD%8C%E5%8D%95"><span class="nav-number">5.1.5.</span> <span class="nav-text">添加歌单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%9F%E5%8F%AF%E4%BB%A5%E5%8D%95%E7%8B%AC%E7%9A%84%E5%81%9A%E4%B8%80%E4%B8%AA%E6%AD%8C%E5%8D%95%E9%A1%B5%E9%9D%A2"><span class="nav-number">5.1.6.</span> <span class="nav-text">也可以单独的做一个歌单页面</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BB%A3%E7%A0%81%E5%9D%97%E4%B8%80%E9%94%AE%E5%A4%8D%E5%88%B6"><span class="nav-number">5.2.</span> <span class="nav-text">2. 代码块一键复制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%96%B0%E5%BB%BA%E4%BB%A3%E7%A0%81%E5%A4%8D%E5%88%B6%E6%A8%A1%E5%9D%97%E6%96%87%E4%BB%B6"><span class="nav-number">5.2.1.</span> <span class="nav-text">1. 新建代码复制模块文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%BC%95%E7%94%A8%E6%96%87%E4%BB%B6"><span class="nav-number">5.2.2.</span> <span class="nav-text">2. 引用文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%B7%BB%E5%8A%A0%E6%8C%89%E9%92%AE%E4%B8%8A%E6%98%BE%E7%A4%BA%E7%9A%84%E8%AF%AD%E8%A8%80"><span class="nav-number">5.2.3.</span> <span class="nav-text">3. 添加按钮上显示的语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%9C%A8%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%BC%80%E5%85%B3"><span class="nav-number">5.2.4.</span> <span class="nav-text">4. 在主题配置文件中添加开关</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%B7%BB%E5%8A%A0%E9%A1%B6%E9%83%A8%E5%8A%A0%E8%BD%BD%E6%9D%A1"><span class="nav-number">5.3.</span> <span class="nav-text">3. 添加顶部加载条</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E4%BF%AE%E6%94%B9%E5%BA%95%E9%83%A8%E6%A0%87%E7%AD%BE"><span class="nav-number">5.4.</span> <span class="nav-text">4. 修改底部标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E6%96%87%E6%9C%AC%E6%8F%90%E7%A4%BA"><span class="nav-number">5.5.</span> <span class="nav-text">5. 文本提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%90%E9%A1%B5%E9%9D%A2"><span class="nav-number">5.6.</span> <span class="nav-text">6. 自定义子页面</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wincer"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Wincer</p>
+  <div class="site-description" itemprop="description">冷眼向洋看世界</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/WincerX" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;WincerX" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ZhuochengXU@outlook.jp" title="E-Mail → mailto:ZhuochengXU@outlook.jp" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/Wincer2006" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;Wincer2006" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wincer</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

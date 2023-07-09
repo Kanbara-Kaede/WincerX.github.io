@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Wincer&#39;s Blog</title>
+  
+  <subtitle>Le vent se lève, il faut tenter de vivre.</subtitle>
+  <link href="https://wincer.space/atom.xml" rel="self"/>
+  
+  <link href="https://wincer.space/"/>
+  <updated>2023-07-06T15:55:25.454Z</updated>
+  <id>https://wincer.space/</id>
+  
+  <author>
+    <name>Wincer</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://wincer.space/posts/undefined/"/>
+    <id>https://wincer.space/posts/undefined/</id>
+    <published>2023-07-06T15:55:25.453Z</published>
+    <updated>2023-07-06T15:55:25.454Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html"></summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo博客搭建全面指南+基于NexT的优化</title>
+    <link href="https://wincer.space/posts/Hexo-Guide/"/>
+    <id>https://wincer.space/posts/Hexo-Guide/</id>
+    <published>2021-08-06T01:51:34.000Z</published>
+    <updated>2023-07-09T07:37:57.787Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;$&#92;text{Hexo}$ 是一个优秀的轻量级博客系统，本身可以兼容各种功能&lt;/p&gt;
+&lt;p&gt;而 $&#92;text{NexT}$，则是一个集成有非常多功能、并且兼容性极好&lt;/p&gt;
+&lt;p&gt;因此本文选择了 $&#92;text{Hexo+NexT}$ 的搭配&lt;/p&gt;
+&lt;p&gt;文中内容有大量需要更新的内容&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Hexo" scheme="https://wincer.space/categories/Hexo/"/>
+    
+    
+    <category term="Hexo" scheme="https://wincer.space/tags/Hexo/"/>
+    
+  </entry>
+  
+</feed>
