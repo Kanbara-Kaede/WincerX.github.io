@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Wincer&#39;s Blog</title>
+  <title>神原楓的小屋</title>
   
   <subtitle>Le vent se lève, il faut tenter de vivre.</subtitle>
-  <link href="https://wincer.space/atom.xml" rel="self"/>
+  <link href="https://kanbara-kaede.space/atom.xml" rel="self"/>
   
-  <link href="https://wincer.space/"/>
+  <link href="https://kanbara-kaede.space/"/>
   <updated>2023-07-06T15:55:25.454Z</updated>
-  <id>https://wincer.space/</id>
+  <id>https://kanbara-kaede.space/</id>
   
   <author>
-    <name>Wincer</name>
+    <name>Kanbara Kaede</name>
     
   </author>
   
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://wincer.space/posts/undefined/"/>
-    <id>https://wincer.space/posts/undefined/</id>
+    <link href="https://kanbara-kaede.space/posts/undefined/"/>
+    <id>https://kanbara-kaede.space/posts/undefined/</id>
     <published>2023-07-06T15:55:25.453Z</published>
     <updated>2023-07-06T15:55:25.454Z</updated>
     
@@ -39,8 +39,8 @@
   
   <entry>
     <title>Hexo博客搭建全面指南+基于NexT的优化</title>
-    <link href="https://wincer.space/posts/Hexo-Guide/"/>
-    <id>https://wincer.space/posts/Hexo-Guide/</id>
+    <link href="https://kanbara-kaede.space/posts/Hexo-Guide/"/>
+    <id>https://kanbara-kaede.space/posts/Hexo-Guide/</id>
     <published>2021-08-06T01:51:34.000Z</published>
     <updated>2023-07-09T07:37:57.787Z</updated>
     
@@ -52,10 +52,10 @@
     
     
     
-    <category term="Hexo" scheme="https://wincer.space/categories/Hexo/"/>
+    <category term="Hexo" scheme="https://kanbara-kaede.space/categories/Hexo/"/>
     
     
-    <category term="Hexo" scheme="https://wincer.space/tags/Hexo/"/>
+    <category term="Hexo" scheme="https://kanbara-kaede.space/tags/Hexo/"/>
     
   </entry>
   
